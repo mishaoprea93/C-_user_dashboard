@@ -1,0 +1,52 @@
+@model user_dashboard.Models.RegisterViews
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a>
+                <h3>User Dashboard</h3>
+            </a>
+
+        </li>
+        <li>
+            <a href="/">
+                <h3>Home</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/loginpage">
+                <h3 class="margined">Sign In</h3>
+            </a>
+        </li>
+    </ul>
+</nav>
+<hr />
+<h1>Please register below:</h1>
+<br>
+<br><span class="erori">@ViewBag.message</span>
+<form action="/register" method="post">
+    <span class="erori" asp-validation-for="FirstName"></span>
+    <label asp-for="FirstName">Frist Name:</label>
+    <input asp-for="FirstName" type="text" /><br><br>
+    <span class="erori" asp-validation-for="LastName"></span>
+    <label asp-for="LastName">Last Name:</label>
+    <input asp-for="LastName" type="text" /><br><br>
+    <span class="erori" asp-validation-for="Email"></span>
+    <label asp-for="Email">Email:</label>
+    <input asp-for="Email" type="email" /><br><br>
+    <span class="erori" asp-validation-for="Password"></span>
+    <label asp-for="Password">Password:</label>
+    <input asp-for="Password" /><br><br>
+    <span class="erori" asp-validation-for="PasswordConfirmation"></span>
+    <label asp-for="PasswordConfirmation">Password Confirmation:</label>
+    <input asp-for="PasswordConfirmation" /><br><br>
+    <button type="submit">Register!</button><br><br>
+    <a href="/loginpage">Already Registered?Log In!</a>
+</form>
+
+
+
+<style>
+    .erori {
+        color: red;
+    }
+</style>

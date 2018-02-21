@@ -1,0 +1,65 @@
+@model user_dashboard.Models.RegisterViews
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a>
+                <h3>User Dashboard</h3>
+            </a>
+
+        </li>
+        <li>
+            <a href="/manage">
+                <h3>Dashboard</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/users/edit">
+                <h3>Profile</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/logout">
+                <h3 class="margined">Log Out!</h3>
+            </a>
+        </li>
+
+    </ul>
+</nav>
+<hr/>
+<br>
+<br>
+<h1>Edit user with id#@ViewBag.user.UserId;</h1>
+<div class="pieces">
+    <form action="/users/@ViewBag.user.UserId/saveinfo" method="post">
+        <label for-asp="Email">Email:</label><br>
+        <input asp-for="Email" value="@ViewBag.user.Email"><br><br>
+        <label for-asp="FirstName">First Name:</label><br>
+        <input asp-for="FirstName" value="@ViewBag.user.FirstName"><br><br>
+        <label for-asp="LastName">Last Name:</label><br>
+        <input asp-for="LastName" value="@ViewBag.user.LastName"><br><br>
+        <label for-asp="Status">Status:</label><br>
+        <input asp-for="Status" value="@ViewBag.user.Status"><br><br>
+        <button type="submit">Save</button>
+    </form>
+</div>
+<div class="pieces">
+    <form action="/users/@ViewBag.user.UserId/savepassword" method="post">
+        <p class="erori">@ViewBag.error</p>
+        <label for-asp="Password">Password:</label><br>
+        <input asp-for="Password"><br><br>
+        <label for-asp="PasswordConfirmation">Password Confirmation:</label><br>
+        <input asp-for="PasswordConfirmation"><br><br>
+        <button type="submit">Update Password</button>
+    </form>
+</div>
+
+<style>
+    .pieces {
+        display: inline-block;
+        width: 49%;
+    }
+    
+    .erori {
+        color: red;
+    }
+</style>

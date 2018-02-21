@@ -1,0 +1,69 @@
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a>
+                <h3>User Dashboard</h3>
+            </a>
+
+        </li>
+        <li>
+            <a href="/manage">
+                <h3>Dashboard</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/users/edit">
+                <h3>Profile</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/logout">
+                <h3 class="margined">Log Out!</h3>
+            </a>
+        </li>
+
+    </ul>
+</nav>
+<hr />
+<br>
+<br> @if(@ViewBag.status=="Admin"){
+<h3>Manage Users:</h3>
+<form action="/">
+    <button class="margined" formaction="/users/new">Add New</button>
+</form> }else{
+<h3>All Users:</h3>
+}
+<table class="table" id="wide">
+    <thead>
+        <tr>
+            <th>Id:</th>
+            <th>Name:</th>
+            <th>Email:</th>
+            <th>Created At:</th>
+            <th>User Level:</th>
+            @if(@ViewBag.status=="Admin") {
+            <th>Actions:</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in ViewBag.users){
+        <tr>
+            <td>@user.UserId</td>
+            <td><a href="/users/show/@user.UserId">@user.FirstName @user.LastName</a></td>
+            <td>@user.Email</td>
+            <td>@user.CreatedAt</td>
+            <td>@user.Status</td>
+            @if(@ViewBag.status=="Admin"){
+            <td><a href="/users/edit/@user.UserId">Edit</a> | <a href="users/remove/@user.UserId">Remove</a></td>
+            }
+
+        </tr>
+        }
+    </tbody>
+</table>
+<style>
+    .margined {
+        margin-left: 450px;
+    }
+</style>

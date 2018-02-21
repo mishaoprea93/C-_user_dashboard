@@ -1,0 +1,62 @@
+@model user_dashboard.Models.RegisterViews
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a>
+                <h3>User Dashboard</h3>
+            </a>
+
+        </li>
+        <li>
+            <a href="/manage">
+                <h3>Dashboard</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/users/edit">
+                <h3>Profile</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/logout">
+                <h3 class="margined">Log Out!</h3>
+            </a>
+        </li>
+
+    </ul>
+</nav>
+<hr />
+<br>
+<br>
+<h1>Add a new user:</h1>
+<br>
+<br><span class="erori">@ViewBag.message</span>
+<form action="/adduser" method="post">
+    <span class="erori" asp-validation-for="FirstName"></span><br>
+    <label asp-for="FirstName">Frist Name:</label>
+    <input asp-for="FirstName" type="text" /><br><br>
+    <span class="erori" asp-validation-for="LastName"></span><br>
+    <label asp-for="LastName">Last Name:</label>
+    <input asp-for="LastName" type="text" /><br><br>
+    <span class="erori" asp-validation-for="Email"></span><br>
+    <label asp-for="Email">Email:</label>
+    <input asp-for="Email" type="email" /><br><br>
+    <span class="erori" asp-validation-for="Password"></span><br>
+    <label asp-for="Password">Password:</label>
+    <input asp-for="Password" /><br><br>
+    <span class="erori" asp-validation-for="PasswordConfirmation"></span><br>
+    <label asp-for="PasswordConfirmation">Password Confirmation:</label>
+    <input asp-for="PasswordConfirmation" /><br><br>
+    <button type="submit">Add User</button><br><br>
+</form>
+
+
+<style>
+    .erori {
+        color: red;
+    }
+    
+    .margined {
+        margin-left: 450px;
+    }
+</style>

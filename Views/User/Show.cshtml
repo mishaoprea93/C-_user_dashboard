@@ -1,0 +1,84 @@
+<script src="http://code.jquery.com/jquery-1.4.4.js" integrity="sha256-sxzQlK95ULOkYdx4Fh/S+vAfqp0O2MHAcnkPg6sm1II=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.1/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery("abbr.timeago").timeago();
+    });
+</script>
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a>
+                <h3>User Dashboard</h3>
+            </a>
+
+        </li>
+        <li>
+            <a href="/manage">
+                <h3>Dashboard</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/users/edit">
+                <h3>Profile</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/logout">
+                <h3 class="margined">Log Out!</h3>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<hr />
+<br>
+<br>
+<h1>@ViewBag.user.FirstName @ViewBag.user.LastName</h1><br>
+<h4>Registered at: @ViewBag.user.CreatedAt</h4>
+<h4>User Id: @ViewBag.user.UserId</h4>
+<h4>Email Address:@ViewBag.user.Email</h4>
+<h4>Description:@ViewBag.user.Description</h4><br>
+<br>
+<form action="/addmessage" method="post">
+    <label for="message">Message:</label><br>
+    <textarea name="message" cols="150" rows="8"></textarea><br>
+    <button type="submit">Leave Message</button>
+</form>
+<br> @foreach(var m in @ViewBag.messages){
+<br>
+<div class="message">
+    <h4>@m.User.FirstName @m.User.LastName Wrote <abbr class="timeago" title="@m.CreatedAt">@m.CreatedAt.ToString()</abbr></h4>
+    <hr/>
+    <h4>--@m.Content</h4>
+    <br> @foreach(var c in @m.Comments){
+    <div class="comment">
+        <p>@c.User.FirstName @c.User.LastName commented <abbr class="timeago" title="@c.CreatedAt">@c.CreatedAt.ToString()</abbr></p>
+        <p>--@c.Content</p>
+    </div>
+    }
+    <br>
+    <form action="/addcomment" method="post">
+        <input type="hidden" value="@m.MessageId" name="messageid">
+        <label for="comment">Comment:</label><br>
+        <textarea name="comment" cols="75" rows="4"></textarea><br>
+        <button type="submit">Leave Comment</button>
+    </form>
+</div>
+}
+
+
+
+<style>
+    .message {
+        margin-left: 150px;
+    }
+    
+    .comment {
+        margin-left: 200px;
+    }
+    
+    .timeago {
+        color: rgb(77, 77, 105);
+    }
+</style>

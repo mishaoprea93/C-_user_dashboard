@@ -1,0 +1,17 @@
+/*Write all of your CSS here*/
+
+.margined {
+    margin-left: 450px;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.erori {
+    color: red;
+}
+
+.timeago {
+    color: red;
+}

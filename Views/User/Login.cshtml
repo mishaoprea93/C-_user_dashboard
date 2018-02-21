@@ -1,0 +1,39 @@
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a>
+                <h3>User Dashboard</h3>
+            </a>
+
+        </li>
+        <li>
+            <a href="/">
+                <h3>Home</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/loginpage">
+                <h3 class="margined">Sign In</h3>
+            </a>
+        </li>
+    </ul>
+</nav>
+<hr />
+<h1>Log In:</h1>
+<br>
+<br>
+<span class="erori">@ViewBag.err</span>
+<form action="login" method="Post">
+    <label for="email">Email:</label>
+    <input type="email" name="email"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" name="password"><br><br>
+    <button type="submit">Log In</button><br><br>
+    <a href="/registerpage">Do not have an account?Register!</a>
+</form>
+
+<style>
+    .erori {
+        color: red;
+    }
+</style>

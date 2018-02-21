@@ -1,0 +1,75 @@
+@model user_dashboard.Models.RegisterViews
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a>
+                <h3>User Dashboard</h3>
+            </a>
+
+        </li>
+        <li>
+            <a href="/manage">
+                <h3>Dashboard</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/users/edit">
+                <h3>Profile</h3>
+            </a>
+        </li>
+        <li>
+            <a href="/logout">
+                <h3 class="margined">Log Out!</h3>
+            </a>
+        </li>
+
+    </ul>
+</nav>
+<hr/>
+<br>
+<br>
+<h1>Edit Your Profile:</h1>
+<br>
+<h3>Change info:</h3>
+<div class="pieces">
+    <form action="/users/saveinfo" method="post">
+        <label for-asp="Email">Email:</label><br>
+        <input asp-for="Email" value="@ViewBag.user.Email"><br><br>
+        <label for-asp="FirstName">First Name:</label><br>
+        <input asp-for="FirstName" value="@ViewBag.user.FirstName"><br><br>
+        <label for-asp="LastName">Last Name:</label><br>
+        <input asp-for="LastName" value="@ViewBag.user.LastName"><br><br>
+        <button type="submit">Save</button>
+    </form>
+</div>
+<div class="pieces">
+    <h3>Change Password:</h3>
+    <form action="/users/savepassword" method="post">
+        <p class="erori">@ViewBag.error</p>
+        <label for-asp="Password">Password:</label><br>
+        <input asp-for="Password"><br><br>
+        <label for-asp="PasswordConfirmation">Password Confirmation:</label><br>
+        <input asp-for="PasswordConfirmation"><br><br>
+        <button type="submit">Update Password</button>
+    </form>
+</div>
+
+<br>
+<h3>Change Description:</h3>
+<form action="/users/savedesc" method="post">
+    <label for="Description">Description:</label><br>
+    <textarea cols="30" rows="5" name="Description">@ViewBag.user.Description</textarea><br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<style>
+    .pieces {
+        display: inline-block;
+        width: 49%;
+    }
+    
+    .erori {
+        color: red;
+    }
+</style>
